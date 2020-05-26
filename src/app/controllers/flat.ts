@@ -5,7 +5,7 @@ import { flatModel } from './../models/flat';
 import { Request, Response } from "express";
 
 export const index = async ( req: Request, res: Response) => {
-  let query: QueryBuilder = await database('flats').select();
+  let query: QueryBuilder = database('flats').select();
   if (req.query.limit) {
     query = query.limit(req.query.limit);
   } if (req.query.offset) {
@@ -50,7 +50,7 @@ export const create = async ( req: Request, res: Response) => {
 
 export const update = async ( req: Request, res: Response) => {
   try {
-    const flat: flatModel = await database('flats').select().where({title: req.params.title});
+    const flat: flatModel = await database('flats').select().where({title: req.params.title}).first();
     if ( flat ) {
       const newFlat: flatModel = {
         title: req.body.title,
@@ -74,7 +74,7 @@ export const update = async ( req: Request, res: Response) => {
 
 export const destroy = async ( req: Request, res: Response) => {
   try { 
-    const flat: flatModel = await database('flats').select().where({title: req.params.title});
+    const flat: flatModel = await database('flats').select().where({title: req.params.title}).first();
     if( flat ) {
       await database('flats').delete().where({title: req.params.title})
       res.sendStatus(204);
