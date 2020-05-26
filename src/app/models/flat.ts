@@ -1,4 +1,4 @@
-export interface flat  {
+export interface flatModel  {
   id?:number
   title: string, 
   price: number,
