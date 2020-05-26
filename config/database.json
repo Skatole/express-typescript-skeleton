@@ -2,7 +2,7 @@
   "development": {
     "client": "mysql",
     "connection": {
-      "host": "express-typescript-skeleton-db",
+      "host": "express-jav-db",
       "user": "root",
       "password": "toor",
       "database": "database"
