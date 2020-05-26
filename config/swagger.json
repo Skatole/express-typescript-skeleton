@@ -1,7 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Express Typescript Skeleton",
+    "title": "Express-Gyak",
+    "version": "1.0.0."
   },
   "schemes": [
     "http"
@@ -13,13 +14,24 @@
     "application/json"
   ],
   "paths": {
-    "/": {
+    "/flat": {
       "get": {
-        "summary": "Hello World",
-        "operationId": "helloWorld",
+        "summary": "Get all flats",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Return with Hello World message"
+            "description": ""
           }
         }
       }
