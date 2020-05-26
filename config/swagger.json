@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Express-Gyak",
+    "title": "Express-jav",
     "version": "1.0.0."
   },
   "schemes": [
@@ -16,7 +16,7 @@
   "paths": {
     "/flat": {
       "get": {
-        "summary": "Get all flats",
+        "summary": "Get the flats",
         "parameters": [
           {
             "in": "query",
@@ -31,7 +31,10 @@
         ],
         "responses": {
           "200": {
-            "description": ""
+            "description": "All the flats",
+            "schema":{
+              "$ref": "#definitions/Flat"
+            }
           }
         }
       }
