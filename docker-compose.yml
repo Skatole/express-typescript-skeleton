@@ -1,7 +1,7 @@
 version: "2"
 services:
-  express-typescript-skeleton-db:
-    container_name: express-typescript-skeleton-db
+  express-jav-db:
+    container_name: express-jav-db
     image: mysql:5.7
     environment:
       MYSQL_DATABASE: "database"
@@ -13,13 +13,13 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - express-typescript-skeleton-db-data:/var/lib/mysql
+      - express-jav-db-data:/var/lib/mysql
     networks:
       inner:
         aliases:
-          - express-typescript-skeleton-db
-  express-typescript-skeleton:
-    container_name: express-typescript-skeleton
+          - express-jav-db
+  express-jav:
+    container_name: express-jav
     build:
       context: ./
       dockerfile: Dockerfile.development
@@ -28,15 +28,15 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - express-typescript-skeleton-db
+      - express-jav-db
     volumes:
       - "./:/usr/src/app"
       - "~/.ssh:/root/.ssh"
     networks:
       inner:
         aliases:
-          - express-typescript-skeleton
+          - express-jav
 networks:
   inner: {}
 volumes:
-  express-typescript-skeleton-db-data: {}
+  express-jav-db-data: {}

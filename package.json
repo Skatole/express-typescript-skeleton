@@ -29,6 +29,7 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2",
     "swagger-express-middleware": "^2.0.5",
+    "swagger-ui-express": "^4.1.4",
     "webpack-node-externals": "^1.7.2"
   },
   "main": "src/index.ts"
