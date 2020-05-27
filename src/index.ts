@@ -4,7 +4,7 @@ import { SwaggerMiddleware } from 'swagger-express-middleware';
 import { Application } from 'express';
 import * as swaggerUi from 'swagger-ui-express';
 import * as swaggerDocument from '../config/swagger.json';
-import { router } from '../src/app/routers/flat';
+import { router } from './app/routers/index';
 
 const app: Application = express();
 app.use(express.json());
@@ -21,9 +21,11 @@ createMiddleware('config/swagger.json', app, (err, middleware: SwaggerMiddleware
     middleware.metadata(),
     middleware.CORS(),
     middleware.parseRequest(),
+    middleware.validateRequest()
     );
     
     const { PORT = 3000 } = process.env;
+
   
   app.listen(PORT, () => {
     console.log(`server started at http://localhost:${PORT}`);
