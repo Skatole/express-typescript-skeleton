@@ -3,9 +3,9 @@ import { Router } from "express";
 
 export const router: Router = Router( { mergeParams: true });
 
-router.get('/flat', flatController.index);
-router.get('/flat', flatController.show);
-router.post('/flat', flatController.create);
-router.put('/flat', flatController.update);
-router.delete('/flat', flatController.destroy);
+router.get('/', flatController.index);
+router.get('/:id', flatController.show);
+router.post('/', flatController.create);
+router.put('/:id', flatController.update);
+router.delete('/:id', flatController.destroy);
 

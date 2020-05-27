@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Express-jav",
-    "version": "1.0.0."
+    "title": "flat-ad",
+    "version": "1.0.1"
   },
   "schemes": [
     "http"
@@ -31,13 +31,159 @@
         ],
         "responses": {
           "200": {
-            "description": "All the flats",
-            "schema":{
+            "description": "Flats all",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#definitions/Flat"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Flat",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#definitions/FlatRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Flat created"
+          }
+        }
+      }
+    },
+    "/flat/{id}": {
+      "get": {
+        "summary": "Get the flat by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "return flat",
+            "schema": {
               "$ref": "#definitions/Flat"
             }
           }
         }
+      },
+      "put": {
+        "summary": "Update by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#definitions/FlatRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "UPdate done"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete flat",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Delete done"
+          }
+        }
       }
+    }
+  },
+  "definitions": {
+    "Flat": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "floorArea": {
+          "type": "integer"
+        },
+        "country": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "integer"
+        },
+        "city": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      }
+    },
+    "FlatRequest": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "floorArea": {
+          "type": "integer"
+        },
+        "country": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "integer"
+        },
+        "city": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "price",
+        "floorArea",
+        "country",
+        "zip",
+        "city",
+        "street"
+      ]
     }
   }
 }
